@@ -1,11 +1,23 @@
-# 1. 모든 파일/폴더를 무시
+# 1) 기본적으로 전부 무시
 *
 
-# 2. 예외 항목 (업로드 허용)
+# 2) 업로드 허용할 경로/파일 해제
 !.gitignore
+!codes/                 # ← 부모 디렉터리부터 해제
 !codes/router.py
-!codes/routers/
 !codes/requirements.txt
+!codes/routers/         # 디렉터리 해제
+!codes/routers/**       # 디렉터리 내부 모든 파일/하위폴더 해제
 
-# 3. 'routers' 폴더 내부의 .env 파일은 다시 무시
+# 3) 민감정보/불필요 산출물 재차 무시
 codes/routers/.env
+codes/routers/__pycache__/
+codes/routers/temp_images/
+codes/routers/extracted_articles.json
+codes/routers/processed_content.json
+
+# 공통 캐시/가상환경
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
