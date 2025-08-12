@@ -1,0 +1,10 @@
+# 1. 모든 파일/폴더를 무시
+*
+
+# 2. 예외 항목 (업로드 허용)
+!.gitignore
+!codes/router.py
+!codes/routers/
+
+# 3. 'routers' 폴더 내부의 .env 파일은 다시 무시
+codes/routers/.env
