@@ -10,3 +10,5 @@
 !codes/routers/
 !codes/routers/**
 
+codes/routers/.env
+
