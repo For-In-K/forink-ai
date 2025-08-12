@@ -809,7 +809,7 @@ def create_roadmap_endpoint(request: RoadmapRequest):
     # 핵심 로직 호출
     roadmap_data = generate_roadmap(responses_for_logic)
     
-    print(f"✅ 로드맵 생성 완료. {len(roadmap_data)}개 카테고리 반환.")
+    print(f"로드맵 생성 완료. {len(roadmap_data)}개 카테고리 반환.")
     return roadmap_data
 
 app.include_router(router)
