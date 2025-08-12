@@ -763,7 +763,7 @@ class UpstageEmbeddingModel:  #KoreaVisaRAG 에서 인스턴스 생성 및 호�
             if 'data' in data and len(data['data']) > 0:
                 embeddings = [d['embedding'] for d in data['data']]
                 
-                # ✅ 모든 값을 float로 변환
+                # 모든 값을 float로 변환
                 if isinstance(texts, str):
                     return [float(x) for x in embeddings[0]]
                 else:
@@ -879,7 +879,7 @@ class KoreanVisaRAG:
         # Chat 모델 초기화
         self.chat_model = UpstageChat(api_key=self.config.upstage_api_key)
         
-        print("✅ 한국 비자 RAG 시스템 초기화 완료!")
+        print("한국 비자 RAG 시스템 초기화 완료!")
     
     def search_similar_documents(self, query: str, top_k: int = 10):
         """사용자 질문과 유사한 문서들을 검색"""
@@ -888,7 +888,7 @@ class KoreanVisaRAG:
         try:
             # 1. 질문을 임베딩으로 변환 (쿼리용 모델 사용)
             query_embedding = self.embedding_model.embed_query(query)
-            print(f"✅ 질문 임베딩 완료 (차원: {len(query_embedding)})")
+            print(f"질문 임베딩 완료 (차원: {len(query_embedding)})")
             
             # 2. Pinecone에서 유사한 벡터 검색
             search_results = self.index.query(
@@ -898,7 +898,7 @@ class KoreanVisaRAG:
                 include_values=False
             )
             
-            print(f"✅ {len(search_results.matches)}개의 관련 문서 검색 완료")
+            print(f"{len(search_results.matches)}개의 관련 문서 검색 완료")
             
             # 3. 결과 정리
             similar_docs = []
@@ -913,7 +913,7 @@ class KoreanVisaRAG:
             return similar_docs
             
         except Exception as e:
-            print(f"❌ 검색 중 오류: {e}")
+            print(f" 검색 중 오류: {e}")
             return []
     
     def answer_question(self, current_question: str, user_profile: dict, chat_history: list, top_k: int = 10):
@@ -935,7 +935,7 @@ class KoreanVisaRAG:
             return "죄송합니다. 관련된 정보를 찾을 수 없습니다."
             
         # 3. 최종 답변 생성 (모든 컨텍스트를 LLM에 전달)
-        print("🤔 모든 정보를 종합하여 답변 생성 중...")
+        print(" 모든 정보를 종합하여 답변 생성 중...")
         final_answer = self.chat_model.generate_answer(
             current_question=current_question,
             user_profile=user_profile,
@@ -943,7 +943,7 @@ class KoreanVisaRAG:
             context_chunks=similar_docs
         )
         
-        print("✅ 답변 생성 완료!")
+        print("답변 생성 완료!")
         print("-" * 60)
         
         return final_answer
@@ -952,13 +952,13 @@ class KoreanVisaRAG:
         """인덱스 상태 확인"""
         try:
             stats = self.index.describe_index_stats()
-            print(f"📊 인덱스 통계:")
+            print(f"인덱스 통계:")
             print(f"  - 총 벡터 수: {stats.total_vector_count}")
             print(f"  - 차원: {stats.dimension}")
             print(f"  - 네임스페이스: {list(stats.namespaces.keys()) if stats.namespaces else '없음'}")
             return stats
         except Exception as e:
-            print(f"❌ 인덱스 상태 확인 오류: {e}")
+            print(f" 인덱스 상태 확인 오류: {e}")
             return None
 
 
