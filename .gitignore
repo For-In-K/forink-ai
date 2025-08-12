@@ -5,6 +5,7 @@
 !.gitignore
 !codes/router.py
 !codes/routers/
+!codes/requirements.txt
 
 # 3. 'routers' 폴더 내부의 .env 파일은 다시 무시
 codes/routers/.env
