@@ -14,6 +14,23 @@ from routers import make_roadmap, searching_engine_with_storage_data, home_outli
 
 app = FastAPI(title="통합 AI 서버")
 
+from fastapi.middleware.cors import CORSMiddleware
+
+# 리액트 개발 환경 및 배포된 도메인 주소 추가
+origins = [
+    "http://localhost:5173",      
+    "https://forink.redzzzi.com" 
+]
+
+# origins 목록에 있는 출처의 요청을 허용
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,        
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"], 
+)
+
 # 스케줄러: 동시 작업은 쓰레드풀 사용, KST 타임존
 scheduler = AsyncIOScheduler(
     timezone=ZoneInfo("Asia/Seoul"),
