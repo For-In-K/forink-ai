@@ -16,7 +16,7 @@ class ArticleSummary(BaseModel):
 router = APIRouter()
 
 # --- 2. 핵심 엔드포인트 코드 ---
-@router.post("/home", response_model=List[ArticleSummary])
+@router.get("/home", response_model=List[ArticleSummary])
 def get_home_articles():
     """
     저장된 extracted_articles.json 파일을 읽어, 각 게시글의 요약 정보를 목록으로 반환합니다.
