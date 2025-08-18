@@ -1016,7 +1016,7 @@ def process_user_message(chat_id: int, request_body: BotMessageRequest):
     )
     
     # 5. 생성된 답변을 클라이언트에게 반환
-    return {"reply": final_answer}
+    return {"chatAnswer": final_answer}
 
 # # main.py에서 이 라우터를 포함시켜야 합니다.
 # from routers import your_router_file
