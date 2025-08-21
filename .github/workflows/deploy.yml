@@ -19,7 +19,9 @@ jobs:
           python-version: '3.13.5'
 
       - name: Zip sorce code
-        run: zip -r forink-ai.zip . -x ".git/*" ".github/*" "venv/*"
+        run: |
+          cd codes
+          zip -r forink-ai.zip . -x ".git/*" ".github/*" "venv/*"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
