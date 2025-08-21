@@ -53,8 +53,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          options: "-o StrictHostKeyChecking=no" 
+          key: ${{ secrets.EC2_SSH_KEY }} 
           script: |
             echo "${{ secrets.ENV_FILE_CONTENT }}" > /home/ec2-user/forink-ai/.env
             /home/ec2-user/deploy-forink-ai.sh
