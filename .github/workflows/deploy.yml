@@ -55,5 +55,5 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }} 
           script: |
-            echo "${{ secrets.ENV_FILE_CONTENT }}" > /home/ec2-user/forink-ai/.env
+            echo "${{ secrets.ENV_FILE_CONTENT }}" | sudo tee /etc/sysconfig/forink-ai > /dev/null
             /home/ec2-user/deploy-forink-ai.sh
