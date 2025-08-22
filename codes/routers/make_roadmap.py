@@ -632,8 +632,8 @@ EXAM_QUESTIONS_DATA = [
 INTERNAL_KEY_MAPPING = {
     1: "visa_type", 2: "stay_duration_categories", 3: "has_place_to_live", 4: "intended_residence_area",
     5: "has_korean_bank_account", 6: "has_health(or_travel)_insurance", 7: "korean_proficiency_level",
-    8: "has_korean_phone", 9: "understands_address_registration", 10: "understands_job_school_search",
-    11: "accompanying_family", 12: "plan_to_drive", 13: "is_working_in_korea", 14: "job_type",
+    8: "has_korean_phone", 9: "understands_address_registration", 10: "understands_job_school_search", 11:"has_support_network",
+    12: "accompanying_family", 13: "plan_to_drive", 14: "is_working_in_korea", 15: "job_type",
     16: "is_studying_in_korea", 17: "study_level", 18: "plan_to_business_invest",
     19: "already_have_alien_registration_card"
 }
