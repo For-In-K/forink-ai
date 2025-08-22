@@ -21,7 +21,7 @@ jobs:
       - name: Zip sorce code
         run: |
           cd codes
-          zip -r ../forink-ai.zip . -x ".git/*" ".github/*" "venv/*"
+          zip -r ../forink-ai.zip . -x ".git/*" ".github/*" "venv/*" "routers/.env"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
