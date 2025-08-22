@@ -18,10 +18,16 @@ jobs:
         with:
           python-version: '3.13.5'
 
-      - name: Zip sorce code
+      - name: Create .env from secret
+        run: |
+          mkdir -p codes/routers
+          echo "${{ secrets.ENV_FILE_CONTENT }}" > codes/routers/.env
+
+      - name: Zip source code
         run: |
           cd codes
-          zip -r ../forink-ai.zip . -x ".git/*" ".github/*" "venv/*" "routers/.env"
+          zip -r ../forink-ai.zip . -x ".git/*" ".github/*" "venv/*"
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -55,7 +61,6 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            export ENV_FILE_CONTENT="${{ secrets.ENV_FILE_CONTENT }}"
-            printf "%s\n" "$ENV_FILE_CONTENT" > /home/ec2-user/forink-ai/codes/routers/.env
-          
+            cd /home/ec2-user/forink-ai
+            unzip -o forink-ai.zip -d .
             /home/ec2-user/deploy-forink-ai.sh
