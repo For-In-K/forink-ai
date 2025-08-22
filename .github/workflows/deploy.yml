@@ -49,11 +49,13 @@ jobs:
         run: aws s3 cp forink-ai.zip s3://${{ secrets.S3_BUCKET_NAME }}/forink-ai.zip
 
       - name: Deploy to EC2
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }} 
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "${{ secrets.ENV_FILE_CONTENT }}" > /home/ec2-user/forink-ai/codes/routers/.env
+            export ENV_FILE_CONTENT="${{ secrets.ENV_FILE_CONTENT }}"
+            printf "%s\n" "$ENV_FILE_CONTENT" > /home/ec2-user/forink-ai/codes/routers/.env
+          
             /home/ec2-user/deploy-forink-ai.sh
