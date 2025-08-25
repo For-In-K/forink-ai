@@ -743,11 +743,11 @@ class UpstageEmbeddingModel:  #KoreaVisaRAG 에서 인스턴스 생성 및 호�
 
     def embed_documents(self, texts):
         """문서 임베딩용 - 데이터 저장시 사용"""
-        return self._embed(texts, "solar-embedding-1-large-passage")
+        return self._embed(texts, "embedding-query")
     
     def embed_query(self, text):
         """쿼리 임베딩용 - 검색시 사용"""
-        return self._embed(text, "solar-embedding-1-large-query")
+        return self._embed(text, "embedding-query")
     
     def _embed(self, texts, model):
         """내부 임베딩 함수"""
